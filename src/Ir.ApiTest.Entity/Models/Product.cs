@@ -1,6 +1,6 @@
 using System;
 
-namespace Ir.IntegrationTest.Entity.Models;
+namespace Ir.ApiTest.Entity.Models;
 
 public class Product
 {

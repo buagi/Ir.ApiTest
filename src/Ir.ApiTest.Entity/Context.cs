@@ -1,8 +1,8 @@
-﻿using Ir.IntegrationTest.Entity.Models;
+﻿using Ir.ApiTest.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Ir.IntegrationTest.Entity;
+namespace Ir.ApiTest.Entity;
 
 public class Context : DbContext
 {

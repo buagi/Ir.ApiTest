@@ -17,6 +17,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Ir.ApiTest.Contracts\Ir.ApiTest.Contracts.csproj" />
     <ProjectReference Include="..\Ir.ApiTest.Entity\Ir.ApiTest.Entity.csproj" />
+    <ProjectReference Include="..\Ir.ApiTest.Validators\Ir.ApiTest.Validators.csproj" />
   </ItemGroup>
 
 </Project>

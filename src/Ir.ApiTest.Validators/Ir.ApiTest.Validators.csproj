@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ir.ApiTest.Contracts\Ir.ApiTest.Contracts.csproj" />
+    <ProjectReference Include="..\Ir.ApiTest.Entity\Ir.ApiTest.Entity.csproj" />
+  </ItemGroup>
+
+</Project>

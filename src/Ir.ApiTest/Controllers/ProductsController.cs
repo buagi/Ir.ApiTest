@@ -1,49 +1,52 @@
-using Ir.IntegrationTest.Contracts;
-using Ir.IntegrationTest.Entity;
+using Ir.ApiTest.Contracts;
+using Ir.ApiTest.Entity;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
-namespace Ir.FakeMarketplace.Controllers;
-
-[ApiController]
-[Route("api/[controller]")]
-public class ProductsController : ControllerBase
+namespace Ir.ApiTest.Controllers
 {
-
-  [HttpGet]
-  public IEnumerable<Product> GetProducts()
+  [ApiController]
+  [Route("api/[controller]")]
+  public class ProductsController : ControllerBase
   {
-    throw new NotImplementedException();
-  }
 
-  [HttpGet("{id}")]
-  public IActionResult GetProduct([FromRoute]string id)
-  {
-    throw new NotImplementedException();
-  }
-
-  [HttpPost()]
-  public async Task<IActionResult> CreateProduct([FromBody] Product product, Context dbContext)
-  {
-    if (await dbContext.Products.AnyAsync(p => p.Id == product.Id))
+    [HttpGet]
+    public async Task<IEnumerable<Product>> GetProducts(Context dbContext)
     {
-      return Conflict();
+      throw new NotImplementedException();
     }
 
-    product.Created = DateTimeOffset.UtcNow;
-    product.LastUpdated = DateTimeOffset.UtcNow;
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetProduct([FromRoute] string id, Context dbContext)
+    {
+      throw new NotImplementedException();
+    }
 
-    //ToDo: Add separate validators namespace / project
-    //dbContext.Products.Add(product);
-    await dbContext.SaveChangesAsync();
+    [HttpPost()]
+    public async Task<IActionResult> CreateProduct([FromBody] Product product, Context dbContext)
+    {
+      if (await dbContext.Products.AnyAsync(p => p.Id == product.Id))
+      {
+        return Conflict();
+      }
 
-    return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
-  }
+      product.Created = DateTimeOffset.UtcNow;
+      product.LastUpdated = DateTimeOffset.UtcNow;
 
-  [HttpPatch("{id}")]
-  public IActionResult UpdateProduct([FromBody] JsonPatchDocument<Product> productPatchDocument)
-  {
-    throw new NotImplementedException();
+      //ToDo: Add separate validators namespace / project
+
+      //dbContext.Products.Add(product);
+      await dbContext.SaveChangesAsync();
+
+      return CreatedAtAction(nameof(GetProduct), new { id = product.Id }, product);
+    }
+
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> UpdateProduct([FromBody] JsonPatchDocument<Product> productPatchDocument, Context dbContext)
+    {
+      throw new NotImplementedException();
+    }
   }
 }

@@ -1,6 +1,6 @@
 using System;
 
-namespace Ir.IntegrationTest.Contracts
+namespace Ir.ApiTest.Contracts
 {
   public class Product
   {
