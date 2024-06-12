@@ -1,15 +1,15 @@
 ﻿using Entity = Ir.ApiTest.Entity;
 using Contracts = Ir.ApiTest.Contracts;
-using Product = Ir.ApiTest.Contracts.Product;
-using dbProduct = Ir.ApiTest.Entity.Models.Product;
+using DbProduct = Ir.ApiTest.Entity.Models.Product;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
-namespace Ir.ApiTest.Validators.Product;
+namespace Ir.ApiTest.Validators.Helpers;
 
 public static class ProductMapper
 {
-  public static Entity.Models.Product ToEntityProduct(this dbProduct contractProduct)
+  public static DbProduct ToEntityProduct(this Ir.ApiTest.Contracts.Product contractProduct)
   {
-    return new Entity.Models.Product
+    return new DbProduct
     {
       Id = contractProduct.Id,
       Name = contractProduct.Name,
@@ -22,7 +22,7 @@ public static class ProductMapper
     };
   }
 
-  public static Contracts.Product ToContractProduct(this Contracts.Product entityProduct)
+  public static Contracts.Product ToContractProduct(this DbProduct entityProduct)
   {
     return new Contracts.Product
     {
